@@ -38,10 +38,11 @@ function comprarProductos() {
 
     } while (seguirComprando)
 
-    const totalConDescuento = aplicarDescuento(totalCompra);
+    const totalConDescuento = aplicarDescuento(totalCompra, cantidad);
     const totalConEnvio = calcularEnvio(totalConDescuento);
 
     return totalConEnvio;
+    
 }
 
 function validarCantidad(cantidad) {
@@ -49,7 +50,7 @@ function validarCantidad(cantidad) {
         if (cantidad !== 0) {
             alert('Debe agregar un número.')
         } else {
-            alert('Debe ingresar un número distinto de cero.')
+            alert('Debe ingresar un número distinto de cero.') 
         }
         cantidad = parseInt(prompt('¿Cuantos queres comprar?'));
     }
@@ -57,15 +58,12 @@ function validarCantidad(cantidad) {
     return cantidad;
 }
 
-function aplicarDescuento(totalCompra) {
-    let totalConDescuento = 0;
-   
-    if (totalCompra >= 3500) {
-        totalConDescuento = totalCompra * 0.95;
-        return totalConDescuento;
-    } else {
-        return totalCompra;
-    }
+function aplicarDescuento(totalCompra, cantidad) {
+    let totalConDescuento = totalCompra;
+    
+    cantidad >= 5 ? totalConDescuento = totalCompra * 0.95 : totalConDescuento;
+
+    return totalConDescuento;
 }
 
 function calcularEnvio(totalCompra) {
@@ -91,6 +89,5 @@ function calcularTotalAPagar(totalCompra) {
 }
 
 const totalCompra = comprarProductos();
-const cantidadValidada = validarCantidad(cantidad);
 
 
