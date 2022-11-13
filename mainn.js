@@ -1,11 +1,11 @@
 class Productos{
-    constructor(id, sku, nombre, precio, tipo, categoria){
+    constructor(id, sku, nombre, precio, categoria, subcategoria){
         this.id = id;
         this.sku = sku;
         this.nombre = nombre;
         this.precio = precio;
-        this.tipo = tipo;
         this.categoria = categoria;
+        this.subcategoria = subcategoria;
     }
  }
 
@@ -30,21 +30,9 @@ class Productos{
 
  arrayProductos.push(producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12, producto13, producto14, producto15);
 
-
-// Filtra por CATEGORIA 
-const tipo = () => {
-    let elegirCategoriaManga = prompt("Porfavor seleccione lo que busca"+'\n'+"MANGA"+'\n'+"COMIC");
-    const filtro = arrayProductos.filter(producto => producto.tipo === elegirCategoriaManga.toUpperCase());
-    let array = [];
-    filtro.forEach(producto => array.push(producto.nombre+' $'+producto.precio));
-    alert('Lista:'+'\n'+array.join('\n'));
-    deseaOrdenar();
-
-
-}
-
-const filtrar = () =>{
-    const filtrado =confirm('¿Quiere seleccionar por categoria?');
+// Filtrar por tipo de producto
+const Comienzo = () =>{
+    const filtrado =confirm('¿Quiere filtrar por categoria?');
     if (filtrado){
         tipo();
     } else {
@@ -53,35 +41,39 @@ const filtrar = () =>{
     }
 }
 
+// Filtra por CATEGORIA 
+const tipo = () => {
+    
+    let elegirCategoriaManga = prompt("Porfavor seleccione lo que busca"+'\n'+"MANGA"+'\n'+"COMIC");
+   
+    const filtro = arrayProductos.filter(producto => producto.categoria === elegirCategoriaManga.toUpperCase());
+    let array = [];
+    filtro.forEach(producto => array.push(producto.nombre+' $'+producto.precio));
+    alert('Lista:'+'\n'+array.join('\n'));
+    deseaOrdenar();
+
+   
+}
+//LISTA DE PRODUCTOS
 const lista = () =>{
     let array = [];
     arrayProductos.forEach(producto => array.push(producto.nombre+' '+producto.categoria+' $'+producto.precio));
     alert('Lista'+'\n'+array.join('\n'));
     comprarProductos();
 }
-
-const menorMayor = () => {
-    arrayProductos.sort((a, b) => a.precio - b.precio);
-    alert(lista());
-    comprarProductos();
-};
-
-// Función para ordenar precio de mayor a menor
-const mayorMenor = () => {
-    arrayProductos.sort((a, b) => b.precio - a.precio);
-    alert(lista());
-    comprarProductos();
-};
-
+// ORDENAR POR MAYOR O MENOR VICEVERSA
 const deseaOrdenar = () =>{
      const orden =confirm('¿Quiere ordenar por menor a mayor?');
     if (orden){
-        menorMayor();
+        arrayProductos.sort((a, b) => a.precio - b.precio);
+        lista();
     } else {
-        mayorMenor();
+        arrayProductos.sort((a, b) => b.precio - a.precio);
+        lista();
     }
     
 }
+// COMPRA DEL PRODUCTO
 const comprarProductos = () => {
     let productoSku = '';
     let productoCantidad = 0;
@@ -113,34 +105,39 @@ const comprarProductos = () => {
         } else {
             alert('El producto no se encuentra en stock.');
         }
-
+        
         seguirComprando = confirm('¿Queres agregar otro producto?');
-
+        
     } while (seguirComprando)
-
+    
     aplicarDescuento(total);
+
 }
-function aplicarDescuento(totalCompra) {
+// DESCUENTO
+const aplicarDescuento = (totalCompra) => {
     if (totalCompra >= 5000) {
         totalCompra = totalCompra * 0.80;
         alert('Tenes un 20% de descuento!');
     }
     calcularEnvio(totalCompra)
 }
-
-function calcularEnvio(totalCompra) {
+// ENVIO
+const calcularEnvio = (totalCompra) => {
     let tieneEnvioADomicilio = confirm('Queres envio a domicilio?');
 
     if (tieneEnvioADomicilio && totalCompra >= 2000) {
         alert('Tenes envio gratis. El total de la compra es: '+totalCompra);
+        
     } else if (tieneEnvioADomicilio && totalCompra < 2000 && totalCompra !== 0) {
         totalCompra += 700;
         alert('El envío cuesta $700. El total de la compra es: '+totalCompra);
+        
     } else {
         alert('El total de la compra es: '+totalCompra);
+        
     }
 };
 
 
-filtrar();
+Comienzo();
 
