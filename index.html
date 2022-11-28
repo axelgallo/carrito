@@ -4,9 +4,108 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Carrito</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/df59baf6b8.js" crossorigin="anonymous"></script>
+    <script defer src="stock.js"></script>
+    <script defer src="modal.js"></script>
+    <script defer src="app.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script src="mainn.js"></script>
+    <header class="header shadow-lg">
+        <div class="logo">
+          <img src="./img/5ede4a3fb760540004f2c5e9.png" alt="logo">
+        </div>
+        <div class="nav">
+          <nav class="d-flex align-items-center">
+            <ul class="header__lista">
+              <li><a href="#">NOVEDADES</a></li>
+              <li><a href="#">COMIC</a></li>
+              <li><a href="#">MANGA</a></li>
+              <li><a href="#">PREVENTA</a></li>
+              <li><a href="#">CONTACTO</a></li>
+            </ul>
+            <button id="boton-carrito"><i class="fas fa-shopping-cart"></i><span id="contadorCarrito">0</span></button>
+          </nav>
+        </div>
+      </header>
+    <main id="contenedor-productos">
+
+    </main>
+
+    <div class="modal-contenedor">
+        <div class="modal-carrito">
+            <h3>Carrito</h3>
+            <button id="carritoCerrar"><i class="fas fa-times-circle"></i></button>
+            <div id="carrito-contenedor">
+            
+            </div>
+            <p class="precioProducto">Precio total: $<span id="precioTotal">0</span></p>
+            <button id="vaciar-carrito" class="boton-agregar">Vaciar carrito</button>
+        </div>
+    </div>
+    <div class="container">
+        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-3 my-3 border-top">
+          <div class="col mb-3">
+            <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+              <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap" /></svg>
+            </a>
+            <p class="text-muted">&copy; 2022</p>
+          </div>
+    
+          <div class="col mb-3">
+            <h5>MÁS INFORMACIÓN</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="./pages/cambios.html" class="nav-link p-0 text-muted">Cambios</a></li>
+              <li class="nav-item mb-2"><a href="./pages/comocomprar.html" class="nav-link p-0 text-muted">Como Comprar</a>
+              </li>
+              <li class="nav-item mb-2"><a href="./pages/contacto.html" class="nav-link p-0 text-muted">Contacto</a></li>
+              <li class="nav-item mb-2"><a href="./pages/quienessomos.html" class="nav-link p-0 text-muted">Quienes
+                  Somos</a></li>
+            </ul>
+          </div>
+    
+          <div class="col mb-3">
+            <h5>MEDIOS DE PAGO</h5>
+            <div>
+              <img src="./img/pago1.png" alt="" class="mediopago">
+              <img src="./img/pago2.png" alt=""class="mediopago">
+              <img src="./img/pago3.png" alt=""class="mediopago">
+              <img src="./img/pago4.png" alt=""class="mediopago">
+              <img src="./img/pago5.png" alt=""class="mediopago">
+              <img src="./img/pago6.png" alt=""class="mediopago">
+              <img src="./img/pago7.png" alt=""class="mediopago">
+              <img src="./img/pago8.png" alt=""class="mediopago">
+              <img src="./img/pago9.png" alt=""class="mediopago">
+              <img src="./img/pago10.png" alt=""class="mediopago">
+              <img src="./img/pago11.png" alt=""class="mediopago">
+              <img src="./img/pago12.png" alt=""class="mediopago">
+            </div>
+            <h5 class="formadeenvioh5">FORMAS DE ENVÍO</h5>
+            <img src="./img/envio.png" alt="" class="envio">
+          </div>
+          <div class="col mb-3">
+            <h5>CONTACTANOS</h5>
+            <div class="divemail">
+              <img src="./img/email-logo-png-27.png" alt="" class="logoemail">
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">info@comiqueria.com</a></li>
+              </ul>
+            </div>
+          </div>
+    
+          <div class="col mb-3">
+            <h5>INFORMACION LEGAL</h5>
+            <ul class="nav flex-column">
+              <img src="./img/Screenshot_72.png" alt="" class="imgfiscal">
+            </ul>
+          </div>
+        </footer>
+      </div>
+    
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
