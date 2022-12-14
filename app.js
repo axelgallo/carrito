@@ -4,10 +4,12 @@ const contenedorCarrito = document.getElementById('carrito-contenedor');
 const botonVaciar = document.getElementById('vaciar-carrito');
 const contadorCarrito = document.getElementById('contadorCarrito');
 const cantidad = document.getElementById('cantidad');
+const procesarCompra = document.querySelector("#procesarCompra");
 const precioTotal = document.getElementById('precioTotal');
 const cantidadTotal = document.getElementById('cantidadTotal');
 
 let carrito = [];
+
 
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('carrito')){
@@ -64,6 +66,18 @@ const eliminarDelCarrito = (prodId) => {
     carrito.splice(indice, 1); 
     actualizarCarrito();
 }
+if (procesarCompra) {
+    procesarCompra.addEventListener("click", () => {
+      if (carrito.length === 0) {
+        Swal.fire({
+          title: "¡Tu carrito está vacio!",
+          text: "Compra algo para continuar con la compra",
+          icon: "error",
+          confirmButtonText: "Aceptar",
+        });
+      }
+    });
+  }
 
 const actualizarCarrito = () => {
     contenedorCarrito.innerHTML = "" 
@@ -71,9 +85,14 @@ const actualizarCarrito = () => {
         const div = document.createElement('div')
         div.className = ('productoEnCarrito')
         div.innerHTML = `
-        <p>${prod.nombre}</p>
-        <p>Precio:$${prod.precio}</p>
-        <p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p>
+        <div>
+        <img class="img-fluid img-carrito" src="${prod.img}"/>
+        </div>
+        <div class="prueba">
+            <p>${prod.nombre}</p>
+            <p>Precio:$${prod.precio}</p>
+            <p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p>
+        </div>
         <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
         `
         contenedorCarrito.appendChild(div);

@@ -193,3 +193,14 @@ h5{
 .formadeenvioh5{
     margin: 10px 0;
 }
+.img-carrito{
+    width:150px;
+    height: 150px;
+    
+} 
+.prueba{
+    display: flex;
+    font-weight: bold;
+    flex-direction: column;
+    margin-top: 20px;
+}
